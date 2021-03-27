@@ -5,3 +5,8 @@ install:
  - make deps
 script:
  - make test
+
+deploy:
+  provider: heroku
+  app: rocky-retreat-63328
+  api_key: ${HEROKU_API_KEY}

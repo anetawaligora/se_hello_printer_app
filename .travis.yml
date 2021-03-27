@@ -4,8 +4,8 @@ python:
 install:
  - make deps
 script:
+ - make lint
  - make test
-
 deploy:
   provider: heroku
   app: rocky-retreat-63328

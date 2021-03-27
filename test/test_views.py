@@ -17,7 +17,7 @@ class FlaskrTestCase(unittest.TestCase):
     def test_msg_with_output_xml(self):
         rv = self.app.get("/?output=XML")
         self.assertEqual(
-            b"<greetings>\n<name>Natalia</name>\n<msg>Hello World!</msg>\n</greetings>",
+            b"<greetings>\n<name>Natalia</name>\n<msg>Hello World!</msg>\n</greetings>", # noqa
             rv.data
         )
 

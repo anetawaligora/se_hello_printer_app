@@ -14,19 +14,15 @@ class FlaskrTestCase(unittest.TestCase):
         s = str(rv.data)
         ",".join(SUPPORTED) in s
 
-    def test_msg_with_output(self):
-        rv = self.app.get("/?output=json")
-        self.assertEqual(b'{ "imie":"Aneta", "mgs":Hello World!"}', rv.data)
-
     def test_msg_with_output_xml(self):
         rv = self.app.get("/?output=XML")
         self.assertEqual(
-            b"<greetings>\n <name>Aneta</name>\n <msg>Hello world</greetings>",
+            b"<greetings>\n<name>Natalia</name>\n<msg>Hello World!</msg>\n</greetings>",
             rv.data
         )
 
     def test_msg_with_output_json(self):
-        rv = self.app.get("/?output=json")
+        rv = self.app.get("/?output=json&name=kamila")
         JSON_Datalist = json.loads(rv.data)
-        JSON_Result = {"imie": "Kamila", "msg": "Hello World!"}
+        JSON_Result = {"imie": "kamila", "msg": "Hello World!"}
         self.assertDictEqual(JSON_Result, JSON_Datalist)

@@ -1,10 +1,10 @@
 .PHONY: test
+
 deps:
 	pip install -r requirements.txt; \
 	pip install -r test_requirements.txt
 lint:
 	flake8 hello_world test
-
 test:
 	PYTHONPATH=. py.test --verbose -s
 run:
@@ -23,4 +23,9 @@ docker_push: docker_build
 	docker logout;
 
 test_cov:
+	PYTHONPATH=. py.test --verbose -s --cov=.
+
+
 test_xunit:
+	PYTHONPATH=. py.test --verbose -s --cov=. --cov-report xml
+	PYTHONPATH=. py.test -s --cov=. --cov-report xml --junit-xml=test_results.xml
